@@ -257,7 +257,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 checkAns(Integer.parseInt(l3b1.getText().toString()), Integer.parseInt(l3b3.getText().toString()), Integer.parseInt(l3b5.getText().toString()), l3b2.getText().toString()) && checkAns(Integer.parseInt(l4b1.getText().toString()), Integer.parseInt(l4b3.getText().toString()), Integer.parseInt(l4b5.getText().toString()), l4b2.getText().toString()) && checkAns(Integer.parseInt(l5b1.getText().toString()),
                 Integer.parseInt(l5b3.getText().toString()), Integer.parseInt(l5b5.getText().toString()), l5b2.getText().toString()))
             {
-
+                pop.setText("You have Won!");
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                 popupView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
@@ -266,8 +266,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         return true;
                     }
                 });
-                Intent intent = new Intent(GameActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.putExtra("Next Round","Next Round");
+                setResult(RESULT_OK,intent);
+                finish();
             }
             else
             {
